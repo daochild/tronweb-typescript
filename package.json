@@ -3,6 +3,7 @@
   "version": "1.0.101",
   "description": "Typescript support package for tronweb library ^4.x",
   "main": "index.js",
+  "keywords": ["tron", "tronweb", "typescript", "tronweb-typescript", "tronweb-ts"],
   "scripts": {
     "start": "npm run build && node build/index.js",
     "start:dev": "npx nodemon",
