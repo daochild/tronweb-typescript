@@ -23,6 +23,6 @@
     "ts-node": "^10.9.1"
   },
   "publishConfig": {
-    "registry": " https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/"
   }
 }
