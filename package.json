@@ -1,5 +1,5 @@
 {
-  "name": "@types/tronweb",
+  "name": "@daochild/tronweb-typescript",
   "version": "1.0.0",
   "description": "Typescript support package for tronweb library ^4.x",
   "main": "index.js",
@@ -23,6 +23,6 @@
     "ts-node": "^10.9.1"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com"
   }
 }
