@@ -21,5 +21,8 @@
     "bignumber.js": "^9.1.1",
     "tronweb": "^5.1.0",
     "ts-node": "^10.9.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
