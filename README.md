@@ -11,9 +11,14 @@ https://developers.tron.network/reference/tronweb-object
 Required: node v14/16 LTS
 
 ```shell
-npm install --save-dev ...
+npm install --save-dev @daochild/tronweb-typescript
 ```
 
 ### Using
 
 Watch example in ``./src/tests/test.ts``
+
+Import should be looks like this:
+```typescript
+import * as tronwebTypes from "@types/tronweb";
+```
