@@ -1,0 +1,25 @@
+{
+  "name": "@types/tronweb",
+  "version": "1.0.0",
+  "description": "Typescript support package for tronweb library ^4.x",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node build/index.js",
+    "start:dev": "npx nodemon",
+    "build": "rimraf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pavlo Bolhar <paul.bolhar@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.1.1",
+    "tronweb": "^5.1.0",
+    "ts-node": "^10.9.1"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "tronweb/*": ["./src/*"]
+    },
+    "module": "commonjs",
+    "lib": [
+      "es6"
+    ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "types": [ "node" ],
+    "typeRoots": [ "../node_modules/@types", "./src/typings/tronweb.d.ts" ],
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": [
+    "./src/index.ts",
+    "./src/typings/tronweb.d.ts",
+  ]
+}
