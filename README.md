@@ -22,3 +22,7 @@ Import should be looks like this:
 ```typescript
 import * as tronwebTypes from "@types/tronweb";
 ```
+
+### Would be nice to do
+
+To put a star ⭐ at the top right of the screen.
