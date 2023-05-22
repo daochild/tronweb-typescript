@@ -1,8 +1,9 @@
 {
   "name": "@daochild/tronweb-typescript",
-  "version": "1.0.102",
+  "version": "1.0.103",
   "description": "Typescript support package for tronweb library ^4.x",
-  "main": "index.js",
+  "main": "",
+  "types": "./src/index.d.ts",
   "keywords": ["tron", "tronweb", "typescript", "tronweb-typescript", "tronweb-ts"],
   "scripts": {
     "start": "npm run build && node build/index.js",
@@ -10,6 +11,13 @@
     "build": "rimraf ./dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "contributors": [
+    {
+      "name": "Pavlo Bolhar",
+      "url": "https://github.com/daochild",
+      "githubUsername": "daochild"
+    }
+  ],
   "author": "Pavlo Bolhar <paul.bolhar@gmail.com>",
   "license": "MIT",
   "devDependencies": {
