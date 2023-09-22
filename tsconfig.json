@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "tronweb/*": ["./src/*"]
-    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
-    "lib": [
-      "es6"
-    ],
+    "esModuleInterop": true,
+    "target": "es5",
     "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "types": [ "node" ],
-    "typeRoots": [ "../node_modules/@types", "./src/typings/tronweb.d.ts" ],
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "declaration": true,
+    "baseUrl": ".",
+    "types":  ["node"],
+    "lib": ["esnext", "dom", "es6", "es5", "es2020", "es2022"]
   },
-  "files": [
-    "./src/index.ts",
-    "./src/typings/tronweb.d.ts",
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
