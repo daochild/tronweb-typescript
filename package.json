@@ -1,10 +1,17 @@
 {
   "name": "@daochild/tronweb-typescript",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Typescript support package for tronweb library ^4.x",
   "types": "./dist/index",
   "type": "module",
-  "keywords": ["tron", "tronweb", "typescript", "tronweb-typescript", "tronweb-ts", "types-tronweb"],
+  "keywords": [
+    "tron",
+    "tronweb",
+    "typescript",
+    "tronweb-typescript",
+    "tronweb-ts",
+    "types-tronweb"
+  ],
   "scripts": {
     "start": "npm run build && node build/index.js",
     "start:dev": "npx nodemon",
