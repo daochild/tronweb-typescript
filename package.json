@@ -4,7 +4,7 @@
   "description": "Typescript support package for tronweb library ^4.x",
   "types": "./dist/index",
   "type": "module",
-  "keywords": ["tron", "tronweb", "typescript", "tronweb-typescript", "tronweb-ts"],
+  "keywords": ["tron", "tronweb", "typescript", "tronweb-typescript", "tronweb-ts", "types-tronweb"],
   "scripts": {
     "start": "npm run build && node build/index.js",
     "start:dev": "npx nodemon",
