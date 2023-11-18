@@ -38,10 +38,10 @@ declare module 'tronweb' {
     } from "tronweb/interfaces";
 
     export class TronWeb {
-        address: any;
-        transactionBuilder: any;
-        trx: any;
-        utils: any;
+        address: typeof TronWeb.address;
+        transactionBuilder: typeof TronWeb.transactionBuilder;
+        trx: typeof TronWeb.trx
+        utils: typeof TronWeb.utils & {"transaction": typeof TronWeb.utils.transaction};
         constructor(fullNode: string, solidityNode: string, eventServer: string|boolean, privateKey?: string|boolean);
         constructor(fullNode: string, solidityNode: string, eventServer: string|boolean, sideOptions: SideOptions, privateKey?: string|boolean);
         constructor(obj: TronWebConstructor);

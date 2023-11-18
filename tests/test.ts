@@ -11,9 +11,9 @@ const tronWeb = new TronWeb({
 )
 
 async function main() {
-    await tronWeb.getEventByTransactionID()
-    await tronWeb.transactionBuilder.applyForSR()
-    await tronWeb.trx.getAccount()
-    await tronWeb.address.fromHex()
-    await tronWeb.utils.transaction.txJsonToPb()
+    await tronWeb.getEventByTransactionID("string")
+    await tronWeb.transactionBuilder.applyForSR("string", "string")
+    await tronWeb.trx.getAccount("string")
+    tronWeb.address.fromHex("string")
+    tronWeb.utils.transaction.txJsonToPb({})
 }
