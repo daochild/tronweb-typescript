@@ -13,24 +13,6 @@ Required: node v14+ LTS
 ```shell
 npm install --save-dev @daochild/tronweb-typescript
 ```
-### Troubleshoots
-
-**error**
-
-missing type, try install type or include *.d.ts
-
-**solution**
-
-```typescript
-// import type through reference path 
-
-///<reference path="node_modules/@daochild/tronweb-typescript/dist/index.d.ts"/>
-import TronWeb from 'tronweb'
-
-const tronweb: TronWeb = new TronWeb({
-    fullHost: 'https://api.trongrid.io',
-})
-```
 
 ### Using
 
