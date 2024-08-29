@@ -35,3 +35,10 @@ import TronWeb from 'tronweb';
 ### Would be nice to do
 
 To put a star ⭐ at the top right of the screen.
+
+### Special attention
+
+Tron development service, consulting and solution for your web3 project.    
+Contact with me:
+https://t.me/daochild
+
