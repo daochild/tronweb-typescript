@@ -104,6 +104,17 @@ declare module 'tronweb/interfaces' {
 
     export type BlockInput = 'latest'|'earliest'|number
 
+    export interface NodeConfig {
+        host: string,
+        timeout: number,
+        user: string,
+        password: string,
+        headers: object,
+        statusPage: string,
+        instance: any,
+        isConnected: Function, // @returns Promise<boolean>
+    }
+
     export interface Account {
         address: {
             base58: string,
@@ -207,18 +218,21 @@ declare module 'tronweb/interfaces' {
         type: string;
     }
 
+    export interface TransactionRawData {
+        contract: RawDataContract[]|Object[],
+        ref_block_bytes: string,
+        ref_block_hash: string,
+        expiration: number,
+        timestamp: number,
+        fee_limit?: number,
+    }
+
     export interface Transaction {
-        visible: boolean;
+        ret?: {}[];
+        visible?: boolean;
         signature?: string[];
         txID: string;
-        raw_data: {
-            contract: RawDataContract[]|Object[],
-            ref_block_bytes: string;
-            ref_block_hash: string;
-            expiration: number;
-            timestamp: number;
-            fee_limit?: number;
-        },
+        raw_data: TransactionRawData,
         raw_data_hex: string;
     }
 
@@ -231,7 +245,7 @@ declare module 'tronweb/interfaces' {
             transaction: {
                 signature: any[];
                 txID: string;
-                raw_data: object[];
+                raw_data: object|object[]|TransactionRawData|TransactionRawData[];
                 raw_data_hex: string;
             };
         }|Transaction;
@@ -251,7 +265,7 @@ declare module 'tronweb/interfaces' {
 
     export interface BlockTransaction {
         txID: string,
-        raw_data: Object[],
+        raw_data: object|object[]|TransactionRawData|TransactionRawData[],
         raw_data_hex: string,
         ret?: any[],
         signature?: any[],
@@ -498,29 +512,7 @@ declare module 'tronweb/interfaces' {
             data: string;
             topics: string[];
         }[];
-        transaction: {
-            ret: {}[];
-            visible: boolean;
-            txID: string;
-            raw_data: {
-                contract: {
-                    parameter: {
-                        value: {
-                            data: string;
-                            owner_address: string;
-                            contract_address: string;
-                        };
-                        type_url: string;
-                    };
-                    type: string;
-                }[];
-                ref_block_bytes: string;
-                ref_block_hash: string;
-                expiration: number;
-                timestamp: number;
-            };
-            raw_data_hex: string;
-        };
+        transaction: Transaction;
     }
 
     export interface Header {

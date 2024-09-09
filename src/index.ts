@@ -34,7 +34,8 @@ declare module 'tronweb' {
         TronContract,
         TronContractResult,
         TronWebConstructor,
-        TrxAccount
+        TrxAccount,
+        NodeConfig
     } from "tronweb/interfaces";
 
     export class TronWeb {
@@ -42,6 +43,7 @@ declare module 'tronweb' {
         transactionBuilder: typeof TronWeb.transactionBuilder;
         trx: typeof TronWeb.trx
         utils: typeof TronWeb.utils & {"transaction": typeof TronWeb.utils.transaction};
+        plugin: typeof TronWeb.plugin;
         constructor(fullNode: string, solidityNode: string, eventServer: string|boolean, privateKey?: string|boolean);
         constructor(fullNode: string, solidityNode: string, eventServer: string|boolean, sideOptions: SideOptions, privateKey?: string|boolean);
         constructor(obj: TronWebConstructor);
@@ -74,10 +76,26 @@ declare module 'tronweb' {
         toHex(val: string|number|object|[]|BigNumber): HexString;
         toSun(trx: number): string;
         toUtf8(hex: string): string;
-        BigNumber(val: number|string|HexString): BigNumber
+        BigNumber(val: number|string|HexString): BigNumber;
+        version: string;
+        fullnodeVersion: string;
+        feeLimit: number;
+        defaultAddress: { hex: boolean|string , base58: boolean|string };
+        defaultPrivateKey: boolean|string;
+        defaultBlock: boolean|string;
+        providers: object|{ HttpProvider: any };
+        fullNode: NodeConfig;
+        solidityNode: NodeConfig;
+        eventServer: NodeConfig;
+        event: any;
     }
 
     export namespace TronWeb {
+        export namespace plugin {
+            function disablePlugins(params?: any): undefined|any;
+            const pluginNoOverride: string[];
+        }
+
         export namespace transactionBuilder {
             function addUpdateData(unsignedTransaction: JSON|Object, memo: string): Promise<Transaction|Object>;
             function applyForSR(address: string, url: string, options?: number): Promise<Transaction|Object>;
@@ -179,9 +197,131 @@ declare module 'tronweb' {
             function toHex(base58: string): string;
         }
         export namespace utils {
+            function isValidURL(url: string): boolean;
+            function isObject(obj: any): boolean;
+            function isArray(arr: any): boolean;
+            function isJson(json: string): boolean;
+            function isBoolean(value: any): boolean;
+            function isBigNumber(value: any): boolean;
+            function isString(value: any): boolean;
+            function isFunction(value: any): boolean;
+            function isHex(value: string): boolean;
+            function isInteger(value: any): boolean;
+            function hasProperty(obj: object, property: string): boolean;
+            function hasProperties(obj: object, properties: string[]): boolean;
+            function mapEvent(event: any): any;
+            function parseEvent(event: any): any;
+            function padLeft(value: string, length: number, char?: string): string;
+            function isNotNullOrUndefined(value: any): boolean;
+            function sleep(ms: number): Promise<void>;
+
+            export namespace code {
+                function arrayEquals(arr1: any[], arr2: any[]): boolean;
+                function base64DecodeFromString(base64: string): string;
+                function base64EncodeToString(str: string): string;
+                function bin2String(bin: string): string;
+                function byte2hexStr(byte: number): string;
+                function byteArray2hexStr(byteArray: number[]): string;
+                function bytesToString(bytes: number[]): string;
+                function getStringType(str: string): string;
+                function hexChar2byte(hexChar: string): number;
+                function hexStr2byteArray(hexStr: string): number[];
+                function hextoString(hex: string): string;
+                function isHexChar(char: string): boolean;
+                function isNumber(value: any): boolean;
+                function strToDate(str: string): Date;
+                function stringToBytes(str: string): number[];
+            }
+
+            export namespace accounts {
+                function generateAccount(): object;
+                function generateAccountWithMnemonic(): object;
+                function generateRandom(): object;
+            }
+
+            export namespace base58 {
+                function decode58(str: string): string;
+                function encode58(str: string): string;
+            }
+
+            export namespace bytes {
+                function base64DecodeFromString(base64: string): string;
+                function base64EncodeToString(str: string): string;
+                function byte2hexStr(byte: number): string;
+                function byteArray2hexStr(byteArray: number[]): string;
+                function bytesToString(bytes: number[]): string;
+                function hextoString(hex: string): string;
+            }
+
+            export namespace crypto {
+                function ECKeySign(key: string, msg: string): string;
+                function SHA256(msg: string): string;
+                function _signTypedData(domain: object, types: object, value: object, privateKey: string): string;
+                function arrayToBase64String(arr: Uint8Array): string;
+                function computeAddress(privateKey: string): string;
+                function decode58Check(address: string): string;
+                function decodeBase58Address(address: string): string;
+                function ecRecover(msgHash: string, signature: string): string;
+                function genPriKey(): string;
+                function getAddressFromPriKey(privateKey: string): string;
+                function getAddressFromPriKeyBase64String(base64: string): string;
+                function getBase58CheckAddress(hexAddress: string): string;
+                function getBase58CheckAddressFromPriKeyBase64String(base64: string): string;
+                function getHexStrAddressFromPriKeyBase64String(base64: string): string;
+                function getPubKeyFromPriKey(privateKey: string): string;
+                function getRowBytesFromTransactionBase64(txBase64: string): string;
+                function isAddressValid(address: string): boolean;
+                function passwordToAddress(password: string): string;
+                function pkToAddress(privateKey: string): string;
+                function signBytes(bytes: Uint8Array, privateKey: string): string;
+                function signTransaction(transaction: object, privateKey: string): object;
+            }
+
+            export namespace abi {
+                function decodeParams(types: string[], output: string, ignoreMethodHash?: boolean): any[];
+                function decodeParamsV2ByABI(abi: object, output: string, ignoreMethodHash?: boolean): any[];
+                function encodeParams(types: string[], values: any[]): string;
+                function encodeParamsV2ByABI(abi: object|any, values: any[]): string;
+            }
+
+            export namespace message {
+                const TRON_MESSAGE_PREFIX: string;
+                function hashMessage(message: string): string;
+                function signMessage(message: string, privateKey: string): string;
+                function verifyMessage(message: string, signature: string): boolean;
+            }
+
             export namespace transaction {
-                function txJsonToPb(tx: JSON|Object): Object;
-                function txPbToTxID(tx: JSON|Object): string;
+                function txCheck(tx: object): boolean;
+                function txCheckWithArgs(tx: object, args: object): boolean;
+                function txJsonToPb(tx: object): object;
+                function txJsonToPbWithArgs(tx: object, args: object): object;
+                function txPbToRawDataHex(pbTx: object): string;
+                function txPbToTxID(pbTx: object): string;
+            }
+
+            export namespace ethersUtils {
+                const AbiCoder: any;
+                const FormatTypes: any;
+                const Interface: any;
+                const Mnemonic: any;
+                const Signature: any;
+                const SigningKey: any;
+                const Wordlist: any;
+                function arrayify(hex: string): Uint8Array;
+                function concat(arrays: Uint8Array[]): Uint8Array;
+                const ethersHDNodeWallet: any;
+                const ethersWallet: any;
+                function id(text: string): string;
+                function isValidMnemonic(mnemonic: string): boolean;
+                function joinSignature(signature: object): string;
+                function keccak256(data: string | Uint8Array): string;
+                function recoverAddress(digest: string, signature: string): string;
+                function sha256(data: string | Uint8Array): string;
+                function splitSignature(signature: string): object;
+                function toUtf8Bytes(text: string): Uint8Array;
+                function toUtf8String(bytes: Uint8Array): string;
+                const wordlists: any;
             }
         }
     }

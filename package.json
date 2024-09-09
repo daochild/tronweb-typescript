@@ -1,6 +1,6 @@
 {
   "name": "@daochild/tronweb-typescript",
-  "version": "1.1.202",
+  "version": "1.2.0",
   "description": "Typescript support package for tronweb library ^4.x",
   "types": "./dist/index",
   "type": "module",
@@ -13,10 +13,9 @@
     "types-tronweb"
   ],
   "scripts": {
-    "start": "npm run build && node build/index.js",
-    "start:dev": "npx nodemon",
+    "watch": "npx nodemon -w ./src -e *.ts --exec npx tsx ./src/index.ts",
     "build": "rimraf ./dist && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx tsx ./tests/test.ts"
   },
   "contributors": [
     {
@@ -28,11 +27,13 @@
   "author": "Pavlo Bolhar <paul.bolhar@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@noble/secp256k1": "^2.1.0",
     "@types/node": "^22.5.4",
     "nodemon": "^3.1.4",
     "rimraf": "^6.0.1",
     "tronweb": "^5.3.2",
     "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {
