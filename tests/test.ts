@@ -2,7 +2,7 @@
 
 // @ts-ignore
 import TronWeb from "tronweb" ;
-// import "../src/index";
+import "../src/index";
 
 const tronWeb = new TronWeb({
     fullHost: 'https://api.trongrid.io',
