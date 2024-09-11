@@ -14,7 +14,7 @@ Required: node v14+ LTS
 npm install --save-dev @daochild/tronweb-typescript
 ```
 
-### Using
+### Usage
 
 1. Import type in package.json as @types/tronweb.
 
@@ -30,6 +30,15 @@ npm install --save-dev @daochild/tronweb-typescript
 ```typescript
 // <reference types="@types/tronweb" />
 import TronWeb from 'tronweb';
+```
+
+Or 
+
+1. Create file `tronweb.d.ts` in your project `src/types` (do not forget load this directory in tsconfig).
+```typescript
+declare module '@type/tronweb' {
+    export * from '@daochild/tronweb-typescript';
+}
 ```
 
 ### Would be nice to do

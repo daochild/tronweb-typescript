@@ -1,7 +1,7 @@
 {
   "name": "@daochild/tronweb-typescript",
-  "version": "1.2.105",
-  "description": "Typescript support package for tronweb library ^4.x",
+  "version": "1.2.2",
+  "description": "Typescript support package for tronweb library ^4.x, ^5.x",
   "types": "./dist/index",
   "type": "module",
   "keywords": [
@@ -27,7 +27,7 @@
   "author": "Pavlo Bolhar <paul.bolhar@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@noble/secp256k1": "^2.1.0",
+    "@noble/secp256k1": "^1.7.1",
     "@types/node": "^22.5.4",
     "nodemon": "^3.1.4",
     "rimraf": "^6.0.1",
