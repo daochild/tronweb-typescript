@@ -142,6 +142,7 @@ declare module 'tronweb' {
             function getAvailableUnfreezeCount(address: string|HexString, options?: Object): Promise<Object>;
             function getBalance(address: string|HexString): Promise<number>;
             function getBandwidth(address: string|HexString): Promise<Object>;
+            function getBandwidthPrices(): Promise<string>;
             function getBlock(block?: number|string): Promise<BlockInfo>;
             function getBlockByHash(blockHash: string): Promise<BlockInfo>;
             function getBlockByNumber(blockID: number): Promise<BlockInfo>;
@@ -156,6 +157,7 @@ declare module 'tronweb' {
             function getCurrentBlock(): Promise<BlockInfo>;
             function getDelegatedResourceV2(fromAddress: string|HexString, toAddress: string|HexString, options?: Object): Promise<DelegatedResourceList|Object>;
             function getDelegatedResourceAccountIndexV2(address: string|HexString, options?: Object): Promise<DelegatedResourceAccount|Object>;
+            function getEnergyPrices(): Promise<string>;
             function getExchangeByID(exchangeID: number): Promise<Exchange|Object>;
             function getNodeInfo(): Promise<NodeInfo|Object>;
             function getReward(address: string|HexString): Promise<number>;

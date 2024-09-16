@@ -1,6 +1,6 @@
 {
   "name": "@daochild/tronweb-typescript",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Typescript support package for tronweb library ^4.x, ^5.x",
   "types": "./dist/index",
   "type": "module",
