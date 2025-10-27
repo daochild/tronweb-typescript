@@ -1,5 +1,9 @@
 # tronweb-typescript
 
+## DEPRECATED 
+
+Reason: TronWeb added typescript support. Hip Hip Hooray!!! 🥳🎉🎉🎉
+
 ### Typescript support package for tronweb library ^4.x (and 5.x)
 
 NOTE:   
